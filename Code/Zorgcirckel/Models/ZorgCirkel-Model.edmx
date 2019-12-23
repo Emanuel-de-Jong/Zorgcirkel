@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="zorgcirkelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="antwoord">
+          <Key>
+            <PropertyRef Name="AntwoordID" />
+          </Key>
+          <Property Name="AntwoordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VraagID" Type="int" Nullable="false" />
+          <Property Name="Antwoord" Type="nvarchar(max)" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="AspNetUsersID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LijstID" Type="int" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Voornaam" Type="nvarchar" MaxLength="256" />
+          <Property Name="Achternaam" Type="nvarchar" MaxLength="256" />
+          <Property Name="Geslacht" Type="nvarchar" MaxLength="256" />
+          <Property Name="Geboortdatum" Type="datetime" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="256" />
+          <Property Name="Woonplaats" Type="nvarchar" MaxLength="256" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="256" />
+          <Property Name="Gemeente" Type="nvarchar" MaxLength="256" />
+          <Property Name="Geboorteplaats" Type="nvarchar" MaxLength="256" />
+          <Property Name="Nationaliteit" Type="nvarchar" MaxLength="256" />
+          <Property Name="BSNNummer" Type="nvarchar" MaxLength="256" />
+          <Property Name="Verzekering" Type="nvarchar" MaxLength="256" />
+          <Property Name="Huisarts" Type="nvarchar" MaxLength="256" />
+          <Property Name="Reanimatiebeleid" Type="bit" />
+          <Property Name="ReanimatieOpmerking" Type="nvarchar" MaxLength="256" />
+          <Property Name="JuridischeStatus" Type="bit" />
+          <Property Name="BurgelijkeStatus" Type="nchar" MaxLength="10" />
+          <Property Name="Financien" Type="bit" />
+          <Property Name="Gezin" Type="bit" />
+          <Property Name="Scholing" Type="nvarchar" MaxLength="256" />
+          <Property Name="Werk" Type="nvarchar" MaxLength="256" />
+          <Property Name="Religie" Type="bit" />
+          <Property Name="ReligieOpmerking" Type="nvarchar" MaxLength="256" />
+          <Property Name="Disabled" Type="bit" />
+          <Property Name="Straatnaam" Type="nvarchar" MaxLength="256" />
+          <Property Name="Huisnunmmer" Type="int" />
+        </EntityType>
+        <EntityType Name="Contacten">
+          <Key>
+            <PropertyRef Name="PatientID" />
+            <PropertyRef Name="ContactpersoonID" />
+          </Key>
+          <Property Name="PatientID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ContactpersoonID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Relatie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contactpersoon" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incidenten">
+          <Key>
+            <PropertyRef Name="IncidentenID" />
+          </Key>
+          <Property Name="IncidentenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Incident" Type="nvarchar(max)" />
+          <Property Name="AspNetUsersID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="IncidentFoto" Type="varbinary(max)" />
+          <Property Name="PatientID" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KoppelingLijsten">
+          <Key>
+            <PropertyRef Name="LijstID" />
+            <PropertyRef Name="VraagID" />
+          </Key>
+          <Property Name="LijstID" Type="int" Nullable="false" />
+          <Property Name="VraagID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lijsten">
+          <Key>
+            <PropertyRef Name="LijstID" />
+          </Key>
+          <Property Name="LijstID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Onderwerp" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Rapportages">
+          <Key>
+            <PropertyRef Name="RapportageID" />
+          </Key>
+          <Property Name="RapportageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AspNetUsersID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Rapportage" Type="nvarchar(max)" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="PatientID" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VraagType">
+          <Key>
+            <PropertyRef Name="VraagTypeID" />
+          </Key>
+          <Property Name="VraagTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VraagType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vragen">
+          <Key>
+            <PropertyRef Name="VraagID" />
+          </Key>
+          <Property Name="VraagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vraag" Type="nvarchar(max)" />
+          <Property Name="VraagTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_antwoord_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="antwoord" Type="Self.antwoord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="antwoord">
+              <PropertyRef Name="AspNetUsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_antwoord_vragen">
+          <End Role="Vragen" Type="Self.Vragen" Multiplicity="1" />
+          <End Role="antwoord" Type="Self.antwoord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vragen">
+              <PropertyRef Name="VraagID" />
+            </Principal>
+            <Dependent Role="antwoord">
+              <PropertyRef Name="VraagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacten_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Contacten" Type="Self.Contacten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contacten">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacten_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Contacten" Type="Self.Contacten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contacten">
+              <PropertyRef Name="ContactpersoonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidenten_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Incidenten" Type="Self.Incidenten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidenten">
+              <PropertyRef Name="AspNetUsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidenten_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Incidenten" Type="Self.Incidenten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidenten">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KoppelingLijsten_Lijsten">
+          <End Role="Lijsten" Type="Self.Lijsten" Multiplicity="1" />
+          <End Role="KoppelingLijsten" Type="Self.KoppelingLijsten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lijsten">
+              <PropertyRef Name="LijstID" />
+            </Principal>
+            <Dependent Role="KoppelingLijsten">
+              <PropertyRef Name="LijstID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KoppelingLijsten_vragen">
+          <End Role="Vragen" Type="Self.Vragen" Multiplicity="1" />
+          <End Role="KoppelingLijsten" Type="Self.KoppelingLijsten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vragen">
+              <PropertyRef Name="VraagID" />
+            </Principal>
+            <Dependent Role="KoppelingLijsten">
+              <PropertyRef Name="VraagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rapportages_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Rapportages" Type="Self.Rapportages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapportages">
+              <PropertyRef Name="AspNetUsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rapportages_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Rapportages" Type="Self.Rapportages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapportages">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vragen_VraagType">
+          <End Role="VraagType" Type="Self.VraagType" Multiplicity="1" />
+          <End Role="Vragen" Type="Self.Vragen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VraagType">
+              <PropertyRef Name="VraagTypeID" />
+            </Principal>
+            <Dependent Role="Vragen">
+              <PropertyRef Name="VraagTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="LijstenBekijken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LijstID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPVerwijderContactpersoonRij" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CONTACTPERSOONID" Type="nvarchar" Mode="In" />
+          <Parameter Name="PATIENTID" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="zorgcirkelModelStoreContainer">
+          <EntitySet Name="antwoord" EntityType="Self.antwoord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacten" EntityType="Self.Contacten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidenten" EntityType="Self.Incidenten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KoppelingLijsten" EntityType="Self.KoppelingLijsten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lijsten" EntityType="Self.Lijsten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rapportages" EntityType="Self.Rapportages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VraagType" EntityType="Self.VraagType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vragen" EntityType="Self.Vragen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_antwoord_AspNetUsers" Association="Self.FK_antwoord_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="antwoord" EntitySet="antwoord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_antwoord_vragen" Association="Self.FK_antwoord_vragen">
+            <End Role="Vragen" EntitySet="Vragen" />
+            <End Role="antwoord" EntitySet="antwoord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacten_AspNetUsers" Association="Self.FK_Contacten_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Contacten" EntitySet="Contacten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacten_AspNetUsers1" Association="Self.FK_Contacten_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Contacten" EntitySet="Contacten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidenten_AspNetUsers" Association="Self.FK_Incidenten_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Incidenten" EntitySet="Incidenten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidenten_AspNetUsers1" Association="Self.FK_Incidenten_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Incidenten" EntitySet="Incidenten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KoppelingLijsten_Lijsten" Association="Self.FK_KoppelingLijsten_Lijsten">
+            <End Role="Lijsten" EntitySet="Lijsten" />
+            <End Role="KoppelingLijsten" EntitySet="KoppelingLijsten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KoppelingLijsten_vragen" Association="Self.FK_KoppelingLijsten_vragen">
+            <End Role="Vragen" EntitySet="Vragen" />
+            <End Role="KoppelingLijsten" EntitySet="KoppelingLijsten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rapportages_AspNetUsers" Association="Self.FK_Rapportages_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Rapportages" EntitySet="Rapportages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rapportages_AspNetUsers1" Association="Self.FK_Rapportages_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Rapportages" EntitySet="Rapportages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vragen_VraagType" Association="Self.FK_Vragen_VraagType">
+            <End Role="VraagType" EntitySet="VraagType" />
+            <End Role="Vragen" EntitySet="Vragen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zorgcirkelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="antwoord">
+          <Key>
+            <PropertyRef Name="AntwoordID" />
+          </Key>
+          <Property Name="AntwoordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VraagID" Type="Int32" Nullable="false" />
+          <Property Name="Antwoord1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="AspNetUsersID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LijstID" Type="Int32" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_antwoord_AspNetUsers" FromRole="antwoord" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Vragen" Relationship="Self.FK_antwoord_vragen" FromRole="antwoord" ToRole="Vragen" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Voornaam" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Achternaam" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Geslacht" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Geboortdatum" Type="DateTime" Precision="3" />
+          <Property Name="Adres" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Woonplaats" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Gemeente" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Geboorteplaats" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Nationaliteit" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BSNNummer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Verzekering" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Huisarts" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Reanimatiebeleid" Type="Boolean" />
+          <Property Name="ReanimatieOpmerking" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="JuridischeStatus" Type="Boolean" />
+          <Property Name="BurgelijkeStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Gezin" Type="Boolean" />
+          <Property Name="Scholing" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Werk" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Religie" Type="Boolean" />
+          <Property Name="ReligieOpmerking" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Disabled" Type="Boolean" />
+          <NavigationProperty Name="antwoord" Relationship="Self.FK_antwoord_AspNetUsers" FromRole="AspNetUsers" ToRole="antwoord" />
+          <NavigationProperty Name="Contacten" Relationship="Self.FK_Contacten_AspNetUsers" FromRole="AspNetUsers" ToRole="Contacten" />
+          <NavigationProperty Name="Contacten1" Relationship="Self.FK_Contacten_AspNetUsers1" FromRole="AspNetUsers" ToRole="Contacten" />
+          <NavigationProperty Name="Incidenten" Relationship="Self.FK_meldingen_AspNetUsers" FromRole="AspNetUsers" ToRole="Incidenten" />
+          <NavigationProperty Name="Rapportages" Relationship="Self.FK_Rapportages_AspNetUsers" FromRole="AspNetUsers" ToRole="Rapportages" />
+          <Property Name="Straatnaam" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Huisnunmmer" Type="Int32" />
+          <NavigationProperty Name="Incidenten1" Relationship="zorgcirkelModel.FK_Incidenten_AspNetUsers1" FromRole="AspNetUsers" ToRole="Incidenten" />
+          <NavigationProperty Name="Rapportages1" Relationship="zorgcirkelModel.FK_Rapportages_AspNetUsers1" FromRole="AspNetUsers" ToRole="Rapportages" />
+          <Property Name="Financien" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Contacten">
+          <Key>
+            <PropertyRef Name="PatientID" />
+            <PropertyRef Name="ContactpersoonID" />
+          </Key>
+          <Property Name="PatientID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactpersoonID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Relatie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contactpersoon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Contacten_AspNetUsers" FromRole="Contacten" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="Self.FK_Contacten_AspNetUsers1" FromRole="Contacten" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Incidenten">
+          <Key>
+            <PropertyRef Name="IncidentenID" />
+          </Key>
+          <Property Name="IncidentenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Incident" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AspNetUsersID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="IncidentFoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_meldingen_AspNetUsers" FromRole="Incidenten" ToRole="AspNetUsers" />
+          <Property Name="PatientID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="zorgcirkelModel.FK_Incidenten_AspNetUsers1" FromRole="Incidenten" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Lijsten">
+          <Key>
+            <PropertyRef Name="LijstID" />
+          </Key>
+          <Property Name="LijstID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Onderwerp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vragen" Relationship="Self.KoppelingLijsten" FromRole="Lijsten" ToRole="Vragen" />
+        </EntityType>
+        <EntityType Name="Rapportages">
+          <Key>
+            <PropertyRef Name="RapportageID" />
+          </Key>
+          <Property Name="RapportageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AspNetUsersID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rapportage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Rapportages_AspNetUsers" FromRole="Rapportages" ToRole="AspNetUsers" />
+          <Property Name="PatientID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers1" Relationship="zorgcirkelModel.FK_Rapportages_AspNetUsers1" FromRole="Rapportages" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="VraagType">
+          <Key>
+            <PropertyRef Name="VraagTypeID" />
+          </Key>
+          <Property Name="VraagTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VraagType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vragen" Relationship="Self.FK_Vragen_VraagType" FromRole="VraagType" ToRole="Vragen" />
+        </EntityType>
+        <EntityType Name="Vragen">
+          <Key>
+            <PropertyRef Name="VraagID" />
+          </Key>
+          <Property Name="VraagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vraag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VraagTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="antwoord" Relationship="Self.FK_antwoord_vragen" FromRole="Vragen" ToRole="antwoord" />
+          <NavigationProperty Name="VraagType" Relationship="Self.FK_Vragen_VraagType" FromRole="Vragen" ToRole="VraagType" />
+          <NavigationProperty Name="Lijsten" Relationship="Self.KoppelingLijsten" FromRole="Vragen" ToRole="Lijsten" />
+        </EntityType>
+        <Association Name="FK_antwoord_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="antwoord" Type="Self.antwoord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="antwoord">
+              <PropertyRef Name="AspNetUsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_antwoord_vragen">
+          <End Role="Vragen" Type="Self.Vragen" Multiplicity="1" />
+          <End Role="antwoord" Type="Self.antwoord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vragen">
+              <PropertyRef Name="VraagID" />
+            </Principal>
+            <Dependent Role="antwoord">
+              <PropertyRef Name="VraagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacten_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Contacten" Type="Self.Contacten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contacten">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacten_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Contacten" Type="Self.Contacten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contacten">
+              <PropertyRef Name="ContactpersoonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meldingen_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Incidenten" Type="Self.Incidenten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidenten">
+              <PropertyRef Name="AspNetUsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rapportages_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Rapportages" Type="Self.Rapportages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapportages">
+              <PropertyRef Name="AspNetUsersID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vragen_VraagType">
+          <End Role="VraagType" Type="Self.VraagType" Multiplicity="1" />
+          <End Role="Vragen" Type="Self.Vragen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VraagType">
+              <PropertyRef Name="VraagTypeID" />
+            </Principal>
+            <Dependent Role="Vragen">
+              <PropertyRef Name="VraagTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KoppelingLijsten">
+          <End Role="Lijsten" Type="Self.Lijsten" Multiplicity="*" />
+          <End Role="Vragen" Type="Self.Vragen" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ZorgCirkelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="antwoord" EntityType="Self.antwoord" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Contacten" EntityType="Self.Contacten" />
+          <EntitySet Name="Incidenten" EntityType="Self.Incidenten" />
+          <EntitySet Name="Lijsten" EntityType="Self.Lijsten" />
+          <EntitySet Name="Rapportages" EntityType="Self.Rapportages" />
+          <EntitySet Name="VraagType" EntityType="Self.VraagType" />
+          <EntitySet Name="Vragen" EntityType="Self.Vragen" />
+          <AssociationSet Name="FK_antwoord_AspNetUsers" Association="Self.FK_antwoord_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="antwoord" EntitySet="antwoord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_antwoord_vragen" Association="Self.FK_antwoord_vragen">
+            <End Role="Vragen" EntitySet="Vragen" />
+            <End Role="antwoord" EntitySet="antwoord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacten_AspNetUsers" Association="Self.FK_Contacten_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Contacten" EntitySet="Contacten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacten_AspNetUsers1" Association="Self.FK_Contacten_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Contacten" EntitySet="Contacten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meldingen_AspNetUsers" Association="Self.FK_meldingen_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Incidenten" EntitySet="Incidenten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rapportages_AspNetUsers" Association="Self.FK_Rapportages_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Rapportages" EntitySet="Rapportages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vragen_VraagType" Association="Self.FK_Vragen_VraagType">
+            <End Role="VraagType" EntitySet="VraagType" />
+            <End Role="Vragen" EntitySet="Vragen" />
+          </AssociationSet>
+          <AssociationSet Name="KoppelingLijsten" Association="Self.KoppelingLijsten">
+            <End Role="Lijsten" EntitySet="Lijsten" />
+            <End Role="Vragen" EntitySet="Vragen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidenten_AspNetUsers1" Association="zorgcirkelModel.FK_Incidenten_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Incidenten" EntitySet="Incidenten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rapportages_AspNetUsers1" Association="zorgcirkelModel.FK_Rapportages_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Rapportages" EntitySet="Rapportages" />
+          </AssociationSet>
+          <FunctionImport Name="LijstenBekijken" ReturnType="Collection(zorgcirkelModel.LijstenBekijken_Result)">
+          <Parameter Name="LijstID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="AspNetRoles" EntityType="zorgcirkelModel.AspNetRoles" />
+          <FunctionImport Name="SPVerwijderContactpersoonRij">
+            <Parameter Name="CONTACTPERSOONID" Mode="In" Type="String" />
+            <Parameter Name="PATIENTID" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <Association Name="FK_Incidenten_AspNetUsers1">
+          <End Type="zorgcirkelModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="zorgcirkelModel.Incidenten" Role="Incidenten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidenten">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rapportages_AspNetUsers1">
+          <End Type="zorgcirkelModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="zorgcirkelModel.Rapportages" Role="Rapportages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapportages">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="LijstenBekijken_Result">
+          <Property Type="String" Name="Onderwerp" Nullable="true" />
+          <Property Type="String" Name="Vraag" Nullable="true" />
+          <Property Type="String" Name="VraagType" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="LijstID" Nullable="false" />
+          <Property Type="Int32" Name="VraagID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="zorgcirkelModelStoreContainer" CdmEntityContainer="ZorgCirkelEntities">
+          <EntitySetMapping Name="antwoord">
+            <EntityTypeMapping TypeName="zorgcirkelModel.antwoord">
+              <MappingFragment StoreEntitySet="antwoord">
+                <ScalarProperty Name="AntwoordID" ColumnName="AntwoordID" />
+                <ScalarProperty Name="VraagID" ColumnName="VraagID" />
+                <ScalarProperty Name="Antwoord1" ColumnName="Antwoord" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="AspNetUsersID" ColumnName="AspNetUsersID" />
+                <ScalarProperty Name="LijstID" ColumnName="LijstID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="zorgcirkelModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Financien" ColumnName="Financien" />
+                <ScalarProperty Name="Huisnunmmer" ColumnName="Huisnunmmer" />
+                <ScalarProperty Name="Straatnaam" ColumnName="Straatnaam" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+                <ScalarProperty Name="Geslacht" ColumnName="Geslacht" />
+                <ScalarProperty Name="Geboortdatum" ColumnName="Geboortdatum" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Woonplaats" ColumnName="Woonplaats" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="Gemeente" ColumnName="Gemeente" />
+                <ScalarProperty Name="Geboorteplaats" ColumnName="Geboorteplaats" />
+                <ScalarProperty Name="Nationaliteit" ColumnName="Nationaliteit" />
+                <ScalarProperty Name="BSNNummer" ColumnName="BSNNummer" />
+                <ScalarProperty Name="Verzekering" ColumnName="Verzekering" />
+                <ScalarProperty Name="Huisarts" ColumnName="Huisarts" />
+                <ScalarProperty Name="Reanimatiebeleid" ColumnName="Reanimatiebeleid" />
+                <ScalarProperty Name="ReanimatieOpmerking" ColumnName="ReanimatieOpmerking" />
+                <ScalarProperty Name="JuridischeStatus" ColumnName="JuridischeStatus" />
+                <ScalarProperty Name="BurgelijkeStatus" ColumnName="BurgelijkeStatus" />
+                <ScalarProperty Name="Gezin" ColumnName="Gezin" />
+                <ScalarProperty Name="Scholing" ColumnName="Scholing" />
+                <ScalarProperty Name="Werk" ColumnName="Werk" />
+                <ScalarProperty Name="Religie" ColumnName="Religie" />
+                <ScalarProperty Name="ReligieOpmerking" ColumnName="ReligieOpmerking" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacten">
+            <EntityTypeMapping TypeName="zorgcirkelModel.Contacten">
+              <MappingFragment StoreEntitySet="Contacten">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="ContactpersoonID" ColumnName="ContactpersoonID" />
+                <ScalarProperty Name="Relatie" ColumnName="Relatie" />
+                <ScalarProperty Name="Contactpersoon" ColumnName="Contactpersoon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidenten">
+            <EntityTypeMapping TypeName="zorgcirkelModel.Incidenten">
+              <MappingFragment StoreEntitySet="Incidenten">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="IncidentenID" ColumnName="IncidentenID" />
+                <ScalarProperty Name="Incident" ColumnName="Incident" />
+                <ScalarProperty Name="AspNetUsersID" ColumnName="AspNetUsersID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="IncidentFoto" ColumnName="IncidentFoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lijsten">
+            <EntityTypeMapping TypeName="zorgcirkelModel.Lijsten">
+              <MappingFragment StoreEntitySet="Lijsten">
+                <ScalarProperty Name="LijstID" ColumnName="LijstID" />
+                <ScalarProperty Name="Onderwerp" ColumnName="Onderwerp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rapportages">
+            <EntityTypeMapping TypeName="zorgcirkelModel.Rapportages">
+              <MappingFragment StoreEntitySet="Rapportages">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="RapportageID" ColumnName="RapportageID" />
+                <ScalarProperty Name="AspNetUsersID" ColumnName="AspNetUsersID" />
+                <ScalarProperty Name="Rapportage" ColumnName="Rapportage" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VraagType">
+            <EntityTypeMapping TypeName="zorgcirkelModel.VraagType">
+              <MappingFragment StoreEntitySet="VraagType">
+                <ScalarProperty Name="VraagTypeID" ColumnName="VraagTypeID" />
+                <ScalarProperty Name="VraagType1" ColumnName="VraagType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vragen">
+            <EntityTypeMapping TypeName="zorgcirkelModel.Vragen">
+              <MappingFragment StoreEntitySet="Vragen">
+                <ScalarProperty Name="VraagID" ColumnName="VraagID" />
+                <ScalarProperty Name="Vraag" ColumnName="Vraag" />
+                <ScalarProperty Name="VraagTypeID" ColumnName="VraagTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="KoppelingLijsten" TypeName="zorgcirkelModel.KoppelingLijsten" StoreEntitySet="KoppelingLijsten">
+            <EndProperty Name="Lijsten">
+              <ScalarProperty Name="LijstID" ColumnName="LijstID" />
+            </EndProperty>
+            <EndProperty Name="Vragen">
+              <ScalarProperty Name="VraagID" ColumnName="VraagID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="LijstenBekijken" FunctionName="zorgcirkelModel.Store.LijstenBekijken">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="zorgcirkelModel.LijstenBekijken_Result">
+                <ScalarProperty Name="Onderwerp" ColumnName="Onderwerp" />
+                <ScalarProperty Name="Vraag" ColumnName="Vraag" />
+                <ScalarProperty Name="VraagType" ColumnName="VraagType" />
+                <ScalarProperty Name="LijstID" ColumnName="LijstID" />
+                <ScalarProperty Name="VraagID" ColumnName="VraagID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="zorgcirkelModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPVerwijderContactpersoonRij" FunctionName="zorgcirkelModel.Store.SPVerwijderContactpersoonRij" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

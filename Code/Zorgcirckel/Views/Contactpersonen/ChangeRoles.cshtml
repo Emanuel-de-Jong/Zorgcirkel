@@ -1,0 +1,50 @@
+﻿@model Zorgcirckel.Models.ToestemmingenViewModel
+
+@{
+    ViewBag.Title = "ChangeRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@Model.Contactpersoon.Voornaam  @Model.Contactpersoon.Achternaam</h2>
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Acties
+            </th>
+            <th>
+                Toestemmen
+            </th>
+        </tr>
+
+        @{
+            foreach (var item in Model.Toestemmingen)
+            {
+                <tr>
+                    <td>
+                        @item.Key
+                    </td>
+                    <td>
+                        <input type="checkbox" id="@item.Key" name="@item.Key" value="@item.Value" onchange="updateToestemming()" />
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+@Html.ActionLink("Wijzig toestemingen", "ApplyRoles")
+
+
+<script>
+    updateToestemming()
+    function updateToestemming() {
+        Session["rolNamen"].forEach(addToestemming);
+    }
+
+    function addToestemming(element, index) {
+        var checkbox = document.getElementById(element)
+        Session["Toestemmingen"].Add(checkbox.id, checkbox.value)
+    }
+</script>

@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <li role="presentation" class="nav-item"><a class="nav-link" href="/Incidentens/Index">Incidenten</a></li>
+    <li role="presentation" class="nav-item"><a class="nav-link" href="/Rapportages/Index">Rapportages</a></li>
+    <li role="presentation" class="nav-item"><a class="nav-link" href="/Contactpersonen/Index">Contactpersonen</a></li>
+    <li role="presentation" class="nav-item"><a class="nav-link" href="/LijstOverzicht/Create">Vragenlijsten</a></li>
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <li role="presentation" class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">LOG UIT</a></li>
+    }
+}
+else
+{
+    <li role="presentation" class="nav-item"><a class="nav-link" href="/Account/Login">LOG IN</a></li>
+    <li role="presentation" class="nav-item"><a class="nav-link" href="/Account/Index">REGISTREER</a></li>
+}

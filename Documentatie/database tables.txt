@@ -1,0 +1,41 @@
+AspNetUsers
+	Function NVARCHAR
+	DateOfBirth DATE
+	Disabled BIT
+
+Contacts
+	PatientId INT
+	UserId INT
+	
+Questions
+	QuestionId INT PK
+	Question TEXT
+	AsnwerType NVARCHAR
+
+QuestionQuestionlists
+	QuestionId INT
+	QuestionlistId INT
+	
+Questionlists
+	questionlistid INT PK
+	Category NVARCHAR
+
+Answers
+	AnswerId INT PK
+	QuestionId INT
+	QuestionlistId INT
+	UserId INT
+	Answer TEXT
+	PostDate DATE
+
+Notifications
+	NotificationId INT PK
+	UserId INT
+	Notification TEXT
+	PostDate DATE
+
+Reports
+	ReportId INT PK
+	UserId INT
+	Report TEXT
+	PostDate DATE

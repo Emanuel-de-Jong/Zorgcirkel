@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Registreren";
+}
+
+
+<main class="page">
+    <section class="clean-block about-us">
+        <div class="container">
+            <div class="block-heading">
+                <h2 style="color: rgb(134,255,60);">Kies Het Type Account</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="container">
+                        <a class="nav-link" href="/Account/RegisterPatient">Patient</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="container">
+                        <a class="nav-link" href="/Account/RegisterContactpersoon">Contactpersoon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

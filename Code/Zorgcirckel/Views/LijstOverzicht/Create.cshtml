@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Zorgcirckel.Models.LijstViewModel>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vraag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Antwoord1)
+        </th>
+        <th></th>
+    </tr>
+    @using (Html.BeginForm("Create", "LijstOverzicht", FormMethod.Post))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(modelItem => item.LijstID)
+                    @Html.HiddenFor(modelItem => item.VraagID)
+                    @Html.DisplayFor(modelItem => item.Vraag)
+                </td>
+                @switch (item.VraagType)
+                {
+                    case "Ja/Nee":
+                        <td>
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "Ja")  Ja
+
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "Nee")  Nee
+                        </td>
+                        break;
+
+                    case "Schaal":
+                        <td>
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "0") 0
+
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "1") 1
+
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "2") 2
+
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "3") 3
+
+                            @Html.RadioButtonFor(modelItem => item.Antwoord1, "4") 4
+                        </td>
+                        break;
+                }
+                <td>
+                    @Html.HiddenFor(modelItem => item.Datum, new { @class = "form-control", @Value = DateTime.Now })
+                </td>
+                <td>
+                    @Html.HiddenFor(modelItem => item.AspNetUsersID, new { @class = "form-control" })
+                </td>
+            </tr>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Versturen" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</table>

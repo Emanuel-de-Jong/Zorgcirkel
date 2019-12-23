@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c12624e2a1c749238dd0fb2164cc03b5" Name="Diagram1" ZoomLevel="127">
+        <EntityTypeShape EntityType="zorgcirkelModel.antwoord" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.AspNetUsers" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.Contacten" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.Incidenten" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.Lijsten" Width="1.5" PointX="1.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.Rapportages" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.VraagType" Width="1.5" PointX="1.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="zorgcirkelModel.Vragen" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <AssociationConnector Association="zorgcirkelModel.FK_antwoord_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_antwoord_vragen" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_Contacten_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_Contacten_AspNetUsers1" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_meldingen_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_Rapportages_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_Vragen_VraagType" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.KoppelingLijsten" ManuallyRouted="false" />
+        <AssociationConnector Association="zorgcirkelModel.FK_Incidenten_AspNetUsers1" />
+        <AssociationConnector Association="zorgcirkelModel.FK_Rapportages_AspNetUsers1" />
+        <EntityTypeShape EntityType="zorgcirkelModel.AspNetRoles" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

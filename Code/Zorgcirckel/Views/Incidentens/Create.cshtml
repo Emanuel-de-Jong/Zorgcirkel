@@ -1,0 +1,122 @@
+﻿@model Zorgcirckel.Models.Incidenten
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Incidentens", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Incidenten</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @{
+        if (User.IsInRole("Patient"))
+        {
+            Html.HiddenFor(model => model.PatientID);
+        }
+        else
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.PatientID, "PatientID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PatientID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PatientID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+    }
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Incident, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Incident, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Incident, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <!--@Html.LabelFor(model => model.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "form-control", @type = "datetime" } })
+            @Html.ValidationMessageFor(model => model.Datum, "", new { @class = "text-danger" })
+        </div>-->
+        <label for="Datum" class="col-md-2 control-label">Datum</label>
+        <div class="col-md-10">
+            <input id="Datum" type="date" class="form-control" name="Datum" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Tijd" class="col-md-2 control-label">Tijd</label>
+        <div class="col-md-10">
+            <input type="time" class="form-control" name="Tijd" id="Tijd" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Foto" class="col-md-2 control-label">Foto</label>
+        <div class="col-md-10">
+            <input type="file" name="file" id="file" accept=".png,.jpg,.jpeg,.gif,.tif" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+<table class="table" style="width:25%;">
+    <tr style="background-color:#86ff3c;">
+        <th style="padding-right:10px;">Kruis hier aan wie de melding gaat zien</th>
+        <th>nee</th>
+        <th>ja</th>
+    </tr>
+    <tr>
+        <td>Maria jansen</td>
+        <td><input type="radio" name="1" value="nee" /></td>
+        <td><input type="radio" name="1" value="ja" /></td>
+    </tr>
+    <tr>
+        <td>Zoon hans</td>
+        <td><input type="radio" name="2" value="nee" /></td>
+        <td><input type="radio" name="2" value="ja" /></td>
+    </tr>
+    <tr>
+        <td>Dochter Lieke</td>
+        <td><input type="radio" name="3" value="nee" /></td>
+        <td><input type="radio" name="3" value="ja" /></td>
+    </tr>
+    <tr>
+        <td>Buurman Henk</td>
+        <td><input type="radio" name="4" value="nee" /></td>
+        <td><input type="radio" name="4" value="ja" /></td>
+    </tr>
+    <tr>
+        <td>Verpleegkundige Joke</td>
+        <td><input type="radio" name="5" value="nee" readonly /></td>
+        <td><input type="radio" name="5" value="ja" checked readonly /></td>
+    </tr>
+    <tr>
+        <td>Huisarts van geesteren</td>
+        <td><input type="radio" name="6" value="nee" readonly/></td>
+        <td><input type="radio" name="6" value="ja" checked readonly/></td>
+    </tr>
+</table>
+<p><i>Zorgprofessionals krijgen automatisch een melding bij incident</i></p>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
