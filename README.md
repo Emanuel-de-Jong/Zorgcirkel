@@ -21,7 +21,7 @@ Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
 - Useable: Yes
 - Main features included: 
  - An account system
-        - A table for most database tables
+	- A table for most database tables
         - Authentication
 - Main features missing: 
           - Styling
