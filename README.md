@@ -22,7 +22,7 @@ Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
 - Main features included: 
 	- An account system
 	- A table for most database tables
-        - Authentication
+	- Authentication
 - Main features missing: 
 	- Styling
 	- Questions
