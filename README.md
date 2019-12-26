@@ -29,6 +29,7 @@ Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
 
 
 ## Screenshots
+The database does not work anymore so I can only show the things guests can see.
 ![Home](/Screenshots/Home.png)
 
 ![Log In](/Screenshots/Log%20In.png)
