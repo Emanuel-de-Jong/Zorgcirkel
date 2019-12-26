@@ -2,7 +2,7 @@
  
 ## Description
 A website made in one week as a bootcamp project.
-I got second place with it.
+I got third place with it.
 It still needs some work but it has most functionalities working.
 
 
