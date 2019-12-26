@@ -20,12 +20,12 @@ Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
 - Completion status: 75%
 - Useable: Yes
 - Main features included: 
- - An account system
+	- An account system
 	- A table for most database tables
         - Authentication
 - Main features missing: 
-          - Styling
-          - Questions
+	- Styling
+	- Questions
 
 
 ## Screenshots
