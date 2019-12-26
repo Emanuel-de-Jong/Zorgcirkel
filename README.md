@@ -24,8 +24,8 @@ Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
       - A table for most database tables
       - Authentication
 - Main features missing: 
-      - Styling
-      - Questions
+          - Styling
+          - Questions
 
 
 ## Screenshots
